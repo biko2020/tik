@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "798779039009",
+    "project_id": "tikdb-c8174",
+    "storage_bucket": "tikdb-c8174.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798779039009:android:08b40339c729adb4a73260",
+        "android_client_info": {
+          "package_name": "com.example.tik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798779039009-qmrecb3811pqqg5dosbr19glq10l83f2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTHAz5vZJDnf-2onoonHEgTOHI-rWvOUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798779039009-qmrecb3811pqqg5dosbr19glq10l83f2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "798779039009-btc3evotugmvfd4umcmg4cv0ikfmtagc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tik"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
