@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/camera/take_picture_model.dart';
+import '../models/camera/main_camera_model.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -21,9 +21,9 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             OutlinedButton(
-              child: const Text(' /// camera'),
+              child: const Text(' Start camera'),
               onPressed: () => {
-                
+                //appel la methode main() depuis le fichier main_camera_model
                 main(),
               },
             ),

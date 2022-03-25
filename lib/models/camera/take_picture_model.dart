@@ -2,31 +2,17 @@ import 'dart:io';
 import 'dart:async';
 
 import 'package:camera/camera.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'display_screen_model.dart';
+
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  final cameras = await availableCameras();
-  final firstCamera = cameras.first;
-
-  runApp(
-    MaterialApp(
-      theme: ThemeData.dark(),
-      home: TakePicture(
-        // Passer la variable camera au widget TakePicture.
-        camera: firstCamera,
-      ),
-    ),
-  );
-}
+// classe pour Prendre une photo
 
 // Créer a StatefulWidget avec State class.
 class TakePicture extends StatefulWidget {
@@ -124,30 +110,6 @@ class _TakePictureState extends State<TakePicture> {
         child: const Icon(Icons.camera_alt),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
-  }
-}
-
-class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-
-  const DisplayPictureScreen({Key? key, required this.imagePath})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Afficher la photo')),
-      body: Center(
-        child: Column(children: <Widget>[
-          Text("$imagePath"),
-          Container(
-            width: MediaQuery.of(context).size.width / 2,
-            height: MediaQuery.of(context).size.height / 2,
-            child: Image.file(File(imagePath)),
-          ),
-        ]),
-      ),
     );
   }
 }
