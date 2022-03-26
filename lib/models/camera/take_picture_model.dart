@@ -1,16 +1,18 @@
-import 'dart:io';
+// import 'dart:io';
 import 'dart:async';
+
+import '/../providers/storage_img.dart';
 
 import 'package:camera/camera.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'display_screen_model.dart';
 
-FirebaseFirestore firestore = FirebaseFirestore.instance;
+//FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 // classe pour Prendre une photo
 
@@ -32,7 +34,7 @@ class _TakePictureState extends State<TakePicture> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
 
-  FirebaseStorage storage = FirebaseStorage.instance;
+  //FirebaseStorage storage = FirebaseStorage.instance;
 
 // créer la methode initState() afin de creer et initialiser le controlleur
 
@@ -90,15 +92,20 @@ class _TakePictureState extends State<TakePicture> {
                   // affecter le chemain au variable imagePath.
                   imagePath: image.path,
                 ),
+                
               ),
             );
-            /////////////// refrence pour firebase ////////////////
-            Reference ref =
-                storage.ref().child("db_tik" + DateTime.now().toString());
-            UploadTask uploadTask = ref.putFile(File(image.path));
-            uploadTask.then((res) {
-              res.ref.getDownloadURL();
-            });
+
+             /////////////// refrence pour firebase ////////////////
+             ///
+            connect(image);
+           
+            // Reference ref =
+            //     storage.ref().child("db_tik" + DateTime.now().toString());
+            // UploadTask uploadTask = ref.putFile(File(image.path));
+            // uploadTask.then((res) {
+            //   res.ref.getDownloadURL();
+            // });
             ///////////////// -------------------- ////////////////
 
             print("Mu image Path:");
@@ -106,6 +113,7 @@ class _TakePictureState extends State<TakePicture> {
           } catch (e) {
             print(e);
           }
+         
         },
         child: const Icon(Icons.camera_alt),
       ),
