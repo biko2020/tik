@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/camera/main_camera_model.dart';
 
+// Home :page d'accueil
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 

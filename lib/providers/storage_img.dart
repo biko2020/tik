@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'dart:async';
 
-//import '../models/camera/take_picture_model.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +8,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+// methode pour se connect a firebase a fin de stocker l'image
 
 Future<void> connect(image) async {
   WidgetsFlutterBinding.ensureInitialized();

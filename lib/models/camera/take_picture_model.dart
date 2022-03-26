@@ -1,20 +1,13 @@
-// import 'dart:io';
-import 'dart:async';
-
-import '/../providers/storage_img.dart';
-
-import 'package:camera/camera.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'dart:async'; // pour la fonction await
+import 'package:camera/camera.dart'; // utilisation du camera
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart'; // pour if (kDebugMode)
 
-// import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-
+// ---- importer des fichiers ---------
+import '/../providers/storage_img.dart';
 import 'display_screen_model.dart';
 
-//FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-// classe pour Prendre une photo
+// classe Prendre une photo
 
 // Créer a StatefulWidget avec State class.
 class TakePicture extends StatefulWidget {
@@ -33,8 +26,6 @@ class _TakePictureState extends State<TakePicture> {
 // Ajoutez les variables pour stocker les données renvoyé par CameraController.initialize().
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
-
-  //FirebaseStorage storage = FirebaseStorage.instance;
 
 // créer la methode initState() afin de creer et initialiser le controlleur
 
@@ -92,28 +83,21 @@ class _TakePictureState extends State<TakePicture> {
                   // affecter le chemain au variable imagePath.
                   imagePath: image.path,
                 ),
-                
               ),
             );
 
-             /////////////// refrence pour firebase ////////////////
-             ///
+            // appel la methode connect to firebase a fin de stocker l'image
             connect(image);
-           
-            // Reference ref =
-            //     storage.ref().child("db_tik" + DateTime.now().toString());
-            // UploadTask uploadTask = ref.putFile(File(image.path));
-            // uploadTask.then((res) {
-            //   res.ref.getDownloadURL();
-            // });
             ///////////////// -------------------- ////////////////
-
-            print("Mu image Path:");
-            print(image.path);
+            ///
+            if (kDebugMode) {
+              print(image.path);
+            }
           } catch (e) {
-            print(e);
+            if (kDebugMode) {
+              print(e);
+            }
           }
-         
         },
         child: const Icon(Icons.camera_alt),
       ),

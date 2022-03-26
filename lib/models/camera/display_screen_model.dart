@@ -15,11 +15,14 @@ class DisplayPictureScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Afficher la photo')),
       body: Center(
         child: Column(children: <Widget>[
-          Text("$imagePath"),
+          Text(imagePath),
           Container(
             width: MediaQuery.of(context).size.width / 2,
             height: MediaQuery.of(context).size.height / 2,
             child: Image.file(File(imagePath)),
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
+            color: Colors.redAccent,
           ),
         ]),
       ),
