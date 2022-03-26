@@ -11,7 +11,7 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 // methode pour se connect a firebase a fin de stocker l'image
 
-Future<void> connect(image) async {
+Future<void> storageImage(image) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -23,3 +23,5 @@ Future<void> connect(image) async {
     res.ref.getDownloadURL();
   });
 }
+
+Future<void> storageImageLocation(imagelocation) async {}

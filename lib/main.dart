@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tik/screens/home.dart';
 
 
+
 void main() {
 
   runApp(const MyApp());
