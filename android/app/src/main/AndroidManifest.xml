@@ -30,10 +30,14 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    
-        <!-- demander la permession au utilisateur-->
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-        <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     </application>
+     <!-- demander la permession au utilisateur-->
+
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+         <!--
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+         -->
 </manifest>

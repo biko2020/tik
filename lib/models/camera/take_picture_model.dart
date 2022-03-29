@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'; // pour if (kDebugMode)
 
 // ---- importer des fichiers ---------
-import '../../providers/storage_picture.dart';
 import 'display_screen_model.dart';
-import 'package:tik/models/location/get_location.dart';
 
 // classe Prendre une photo
 
@@ -86,19 +84,6 @@ class _TakePictureState extends State<TakePicture> {
                 ),
               ),
             );
-
-            // appel la methode storageImage to firebase a fin de stocker l'image
-            storageImage(image);
-
-            // appel la methode storageImageLocation pour enregistrer les itineraires de la photo
-            //-------------------------------------------------------------
-            final imageLocation = getLocation();
-            storageImageLocation(imageLocation);
-            //-------------------------------------------------------------
-
-            if (kDebugMode) {
-              print(image.path);
-            }
           } catch (e) {
             if (kDebugMode) {
               print(e);
