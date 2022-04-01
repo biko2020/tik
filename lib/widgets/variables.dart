@@ -1,0 +1,2 @@
+var currentPosition =0;
+

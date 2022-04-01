@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 // Create a CollectionReference called location that references the firestore collection
-CollectionReference location =
-    FirebaseFirestore.instance.collection('location');
 
-Future<void> addlocation(latitude, longitude, name) {
+Future<void> addlocation(coords, place) {
   // Call the location's CollectionReference to add a new location
+  CollectionReference location =
+      FirebaseFirestore.instance.collection('location');
 
   return location
 
       //.doc('location' + DateTime.now().toString())
-      .add({'latitude': latitude, 'longitude': longitude, 'name': name})
-      .then((value) => print("add Location"))
-      .catchError((error) => print("Failed to add location: $error"));
+      .add({'coords': coords, 'place': place})
+      .then((value) => debugPrint("add Location"))
+      .catchError((error) => debugPrint("Failed to add location: $error"));
 }
