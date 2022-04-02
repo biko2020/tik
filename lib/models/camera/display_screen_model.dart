@@ -40,7 +40,7 @@ class DisplayPictureScreen extends StatelessWidget {
                 // appel la methode getLocation afin de recuperer les itinéraires
                 //-------------------------------------------------------------
                 Position position = await getLocation();
-                dynamic address = await getAddressFromLatLong(position);
+                dynamic address = await getAddressLocation(position);
 
                 // la fonction asslocation sert a enregistrer le les itinéraires
                 // dans la base de donnes firebaise store.

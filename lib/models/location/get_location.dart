@@ -36,7 +36,7 @@ Future<Position> getLocation() async {
 }
 
 // fonction qui recupere l'adresse de localisation
-Future getAddressFromLatLong(Position position) async {
+Future getAddressLocation(Position position) async {
   List<Placemark> placemarks =
       await placemarkFromCoordinates(position.latitude, position.longitude);
   //print(placemarks);
