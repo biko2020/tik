@@ -37,13 +37,15 @@ class DisplayPictureScreen extends StatelessWidget {
 
                 storageImage(File(imagePath));
 
-                // appel la methode addLocation pour enregistrer les itineraires de la photo
+                // appel la methode getLocation afin de recuperer les itinéraires
                 //-------------------------------------------------------------
                 Position position = await getLocation();
-                addlocation('${position.latitude},${position.longitude}',
-                    "location name");
+                dynamic address = await getAddressFromLatLong(position);
 
-                // pp = p.altitude,
+                // la fonction asslocation sert a enregistrer le les itinéraires
+                // dans la base de donnes firebaise store.
+                addlocation(
+                    '${position.latitude},${position.longitude}', address);
 
                 //-------------------------------------------------------------
               }),
@@ -52,19 +54,3 @@ class DisplayPictureScreen extends StatelessWidget {
     );
   }
 }
-
-// var p = UserLoction(p.lanti);
-
-// class UserLoction {
-//   //late Position lanti;
-//   String lanti;
-
-//   UserLoction(this.lanti);
-
-//   getLocation() async {
-//     //Position position = await Geolocator.getCurrentPosition(
-//     //   desiredAccuracy: LocationAccuracy.high);
-//     String position = "40.712784";
-//     p.lanti = position;
-//   }
-// }
