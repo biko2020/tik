@@ -1,7 +1,8 @@
-import 'dart:async'; // pour la fonction await
+import 'dart:async';
 import 'package:camera/camera.dart'; // utilisation du camera
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // widgets
 import 'package:flutter/foundation.dart'; // pour if (kDebugMode)
+import 'package:tik/main.dart';
 
 // ---- importer des fichiers ---------
 import 'display_screen_model.dart';
@@ -38,7 +39,6 @@ class _TakePictureState extends State<TakePicture> {
       // selectionner le type de résolution a utiliser
       ResolutionPreset.medium,
     );
-
     // initialiser le controlleur
     _initializeControllerFuture = _controller.initialize();
   }
@@ -53,7 +53,18 @@ class _TakePictureState extends State<TakePicture> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Prendre une Photo')),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // revenir a la page main.dart
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MyApp()));
+          },
+        ),
+        title: const Text('Tik : Prendre une Photo'),
+        backgroundColor: Colors.redAccent,
+      ),
       body:
           // Nous utilisons FutureBuilder pour s'assuré que le contrôleur a fini de s'initialiser.
           FutureBuilder<void>(

@@ -18,20 +18,36 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Afficher la photo')),
+      appBar: AppBar(
+        title: const Text('Envoyer votre Réclamation'),
+        backgroundColor: Colors.redAccent,
+      ),
       body: Center(
         child: Column(children: <Widget>[
-          Text(imagePath),
+          //Text(imagePath),
+          const SizedBox(height: 34.0),
           Container(
-            width: MediaQuery.of(context).size.width / 2,
-            height: MediaQuery.of(context).size.height / 2,
-            child: Image.file(File(imagePath)),
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.all(8.0),
+            // decoration: const BoxDecoration(
+            //   shape: BoxShape.circle,
+            //   color: Colors.redAccent,
+            // ),
+
+            // definir la marge du cadre
+            padding: const EdgeInsets.all(2.0),
+            margin: const EdgeInsets.all(2.0),
             color: Colors.redAccent,
+
+            // en recupere la taille de la fenetre, puis
+            // en definir la taille de l'image par rapport a l'ecran
+            width: MediaQuery.of(context).size.width / 1,
+            height: MediaQuery.of(context).size.height / 2,
+
+            // récuperer le fichier de l'image
+            child: Image.file(File(imagePath)),
           ),
+          const SizedBox(height: 15.0),
           OutlinedButton(
-              child: const Text('send Iamge'),
+              child: const Text('Envoyer la réclamation'),
               onPressed: () async {
                 // appel la methode storageImage to firebase a fin de stocker l'image
 
