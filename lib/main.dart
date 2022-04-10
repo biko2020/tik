@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tik/screens/home.dart';
+import 'package:tik/utilities/constants.dart';
 
 import 'package:tik/utilities/themes.dart';
 
@@ -31,11 +32,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     //WidgetsFlutterBinding.ensureInitialized();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const Home(),
-      title: 'Tik',
-      theme: CustomTheme.lightTheme,
-      darkTheme: CustomTheme.darkTheme,
-      themeMode: currentTheme.currentTheme,
+      //title: 'Tik',
+      theme: ThemeData(
+        fontFamily: "Cairo",
+        scaffoldBackgroundColor: kBackgroundColor,
+        textTheme: Theme.of(context).textTheme.apply(displayColor: kTextColor),
+        primarySwatch: Colors.blue,
+      ),
     );
   }
 }
