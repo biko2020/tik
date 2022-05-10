@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
           Container(
             height: size.height * .45,
             decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 231, 1, 1),
+              color: kVertMarocaine,
               image: DecorationImage(
                 alignment: Alignment.centerLeft,
                 // image d'accueil
@@ -51,14 +51,23 @@ class _HomeState extends State<Home> {
                     alignment: Alignment.topRight,
                     child: Container(
                       alignment: Alignment.center,
-                      height: 60,
-                      width: 60,
+                      height: 50,
+                      width: 50,
                       decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 251, 250, 250),
+                        color: kRougeMarocaine,
                         shape: BoxShape.circle,
                       ),
+
                       // --- logo
-                      child: SvgPicture.asset("assets/icons/camera.svg"),
+                      child: const Text(
+                        "Tik",
+                        style: TextStyle(
+                          color: kVertMarocaine,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.0,
+                        ),
+                      ),
+                      //child: SvgPicture.asset("assets/icons/tiklogo.svg"),
                     ),
                   ),
                   Text(
@@ -66,7 +75,7 @@ class _HomeState extends State<Home> {
                     style: Theme.of(context)
                         .textTheme
                         .displaySmall
-                        ?.copyWith(fontWeight: FontWeight.w200),
+                        ?.copyWith(fontWeight: FontWeight.w100),
                   ),
                   Expanded(
                     child: GridView.count(
@@ -80,7 +89,7 @@ class _HomeState extends State<Home> {
                         // ---- Service camera
                         ServiceCard(
                           title: "Prendre une photo",
-                          svgSrc: "assets/icons/tikimg.svg",
+                          imageSrc: "assets/icons/cameraC.svg",
                           press: () {
                             //appel la classe MainCamera() depuis le fichier main_camera_model.dart
                             Navigator.push(
@@ -92,9 +101,9 @@ class _HomeState extends State<Home> {
                         // --- service Texte
                         ServiceCard(
                           title: "Ecrire un Texte",
-                          svgSrc: "assets/icons/tiktext.svg",
+                          imageSrc: "assets/icons/cameraC.svg",
                           press: () {
-                            // appel la classe WriteMessage depuis le fichier main_message_text
+                            // appel la classe WriteMessage depuis le fichier main_message_text.dart
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -118,14 +127,14 @@ class _HomeState extends State<Home> {
 // -- class ServiceCard pour gerer le menu des services propose par Tik---
 
 class ServiceCard extends StatelessWidget {
-  final String svgSrc; // variale pour recupere l'image
+  final String imageSrc; // variale pour recupere l'image
   final String title; //  variale pour recupere le text
   // variable press de type Function pour activer l 'evenement On Tap
   final Function() press;
 
   const ServiceCard(
       {Key? key,
-      required this.svgSrc,
+      required this.imageSrc,
       required this.title,
       required this.press})
       : super(key: key);
@@ -160,8 +169,9 @@ class ServiceCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   const Spacer(),
-                  // *****  recupere l'image dans svgSrc
-                  SvgPicture.asset(svgSrc),
+                  // *****  recupere l'image dans imageSrc
+                  //Image(image: AssetImage(imageSrc)),
+                  SvgPicture.asset(imageSrc),
                   const Spacer(),
                   Text(
                     // *****  recupere le text dans title

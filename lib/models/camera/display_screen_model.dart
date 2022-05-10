@@ -1,11 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:tik/main.dart';
 
 // ---- importer des fichiers ---------
-import '../../providers/storage_picture.dart';
-import '../../providers/storage_picture_location.dart';
-import '../location/get_location.dart';
+import 'package:tik/utilities/constants.dart';
+import 'package:tik/models/camera/show_picture_model.dart';
 
 // Class pour Afficher la photo dans l'ecran de mobile
 
@@ -17,55 +15,113 @@ class DisplayPictureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Envoyer votre Réclamation'),
-        backgroundColor: Colors.redAccent,
-      ),
-      body: Center(
-        child: Column(children: <Widget>[
-          //Text(imagePath),
-          const SizedBox(height: 34.0),
+      resizeToAvoidBottomInset: false,
+      body: Stack(
+        // le conteneur prendra 45% de la taille de l'ecarn
+        children: <Widget>[
           Container(
-            // decoration: const BoxDecoration(
-            //   shape: BoxShape.circle,
-            //   color: Colors.redAccent,
-            // ),
-
-            // definir la marge du cadre
-            padding: const EdgeInsets.all(2.0),
-            margin: const EdgeInsets.all(2.0),
-            color: Colors.redAccent,
-
-            // en recupere la taille de la fenetre, puis
-            // en definir la taille de l'image par rapport a l'ecran
-            width: MediaQuery.of(context).size.width / 1,
-            height: MediaQuery.of(context).size.height / 2,
-
-            // récuperer le fichier de l'image
-            child: Image.file(File(imagePath)),
+            height: size.height * .30,
+            decoration: const BoxDecoration(
+              color: kVertMarocaine,
+              // image: DecorationImage(
+              //   alignment: Alignment.centerLeft,
+              //   // image d'accueil
+              //   image: AssetImage(""),
+              //),
+            ),
           ),
-          const SizedBox(height: 15.0),
-          OutlinedButton(
-              child: const Text('Envoyer la réclamation'),
-              onPressed: () async {
-                // appel la methode storageImage to firebase a fin de stocker l'image
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      width: 50,
+                      decoration: const BoxDecoration(
+                        color: kRougeMarocaine,
+                        shape: BoxShape.circle,
+                      ),
 
-                storageImage(File(imagePath));
+                      // --- logo
+                      child: const Text(
+                        "Tik",
+                        style: TextStyle(
+                          color: kVertMarocaine,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              // revenir a la page main.dart
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MyApp()));
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 0.5,
+                  ),
+                  const Text(
+                    "Faire nous savoir s'il y a des anomalies sur votre ville",
+                  ),
+                  Center(
+                    child: Column(children: <Widget>[
+                      //Text(imagePath),
+                      const SizedBox(height: 34.0),
+                      Container(
+                        // decoration: const BoxDecoration(
+                        //   shape: BoxShape.circle,
+                        //   color: Colors.redAccent,
+                        // ),
 
-                // appel la methode getLocation afin de recuperer les itinéraires
-                //-------------------------------------------------------------
-                Position position = await getLocation();
-                dynamic address = await getAddressLocation(position);
+                        // definir la marge du cadre
+                        padding: const EdgeInsets.all(2.0),
+                        margin: const EdgeInsets.all(2.0),
+                        color: Colors.redAccent,
 
-                // la fonction asslocation sert a enregistrer le les itinéraires
-                // dans la base de donnes firebaise store.
-                addlocation(
-                    '${position.latitude},${position.longitude}', address);
+                        // en recupere la taille de la fenetre, puis
+                        // en definir la taille de l'image par rapport a l'ecran
+                        width: MediaQuery.of(context).size.width / 1.2,
+                        height: MediaQuery.of(context).size.height / 1.5,
 
-                //-------------------------------------------------------------
-              }),
-        ]),
+                        child: ShowPicture(
+                          imagePath: imagePath,
+                        ),
+                      ),
+                    ]),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

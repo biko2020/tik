@@ -61,6 +61,9 @@ dev_dependencies:
   path_provider: ^2.0.9
   path: ^1.8.1
 
+  # ajouter icon a l app
+  flutter_launcher_icons: ^0.9.2
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -107,6 +110,7 @@ flutter:
          weight: 700
        - asset: assets/fonts/Cairo/Cairo-Black.ttf 
          weight: 900 
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

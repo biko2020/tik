@@ -10,7 +10,7 @@ Future<Position> getLocation() async {
   // Testez si les services de localisation sont activés..
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) {
-    // Si les services de localisation ne sont pas activés ne continuez pas
+    // Si les services de localisation ne sont pas activés,
     // demander aux utilisateurs d'activer les services de localisation.
 
     return Future.error('Les services de localisation sont désactivés.');
@@ -21,7 +21,7 @@ Future<Position> getLocation() async {
     permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.denied) {
       // si les autorisations sont refusées, redemande les permissions (c'est aussi là que
-      // devraitShowRequestPermissionRationale d'Android retourne vrai.
+      // devrait RequestPermission d'Android retourne vrai.
       return Future.error('Les autorisations de localisation sont refusées.');
     }
   }
@@ -30,18 +30,22 @@ Future<Position> getLocation() async {
     return Future.error(
         'Les autorisations de localisation sont définitivement refusées.');
   }
-  // les autorisations sont accordées et nous pouvons
+  // les autorisations sont accordées
   return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high);
 }
 
-// fonction qui recupere l'adresse de localisation
+// la fonction getAddressLocation recupere l'adresse de localisation
 Future getAddressLocation(Position position) async {
   List<Placemark> placemarks =
       await placemarkFromCoordinates(position.latitude, position.longitude);
   //print(placemarks);
   Placemark place = placemarks[0];
-  String address =
-      '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
+  //dynamic address = [];
+  //address = [place.street, place.locality, place.country];
+  String address = '${place.street},${place.locality},${place.country}';
+
   return address;
+
+  //'${place.street},${place.subLocality},${place.locality},${place.postalCode},${place.country}';
 }
