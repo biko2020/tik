@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import '../../providers/storage_picture.dart';
 import '../../providers/storage_picture_location.dart';
 import '../location/get_location.dart';
+import 'package:tik/utilities/constants.dart'; //fichier des variables globale
 
 class ShowPicture extends StatelessWidget {
   final String imagePath;
@@ -33,16 +34,16 @@ class ShowPicture extends StatelessWidget {
                 dynamic address = await getAddressLocation(position);
 
                 List<String> result = address.split(',');
-
+                //séparer les elements du tableau
                 var place = result[0];
                 var ville = result[1];
                 var pays = result[2];
 
-                //var street = address[0];
-                // la fonction asslocation sert a enregistrer le les itinéraires
-                // dans la base de donnes firebaise store.
+                // la fonction addlocation sert a enregistrer les itinéraires
+                // dans firestore.
+                // recuperer le nom de l'image dans une variable global imageName.
                 addlocation('${position.latitude}', '${position.longitude}',
-                    place, ville, pays);
+                    place, ville, pays, imageName);
 
                 //-------------------------------------------------------------
               }),

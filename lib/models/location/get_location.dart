@@ -35,17 +35,13 @@ Future<Position> getLocation() async {
       desiredAccuracy: LocationAccuracy.high);
 }
 
-// la fonction getAddressLocation recupere l'adresse de localisation
+// la fonction getAddressLocation recupere l'adresse de la position
 Future getAddressLocation(Position position) async {
   List<Placemark> placemarks =
       await placemarkFromCoordinates(position.latitude, position.longitude);
   //print(placemarks);
   Placemark place = placemarks[0];
-  //dynamic address = [];
-  //address = [place.street, place.locality, place.country];
-  String address = '${place.street},${place.locality},${place.country}';
-
-  return address;
-
   //'${place.street},${place.subLocality},${place.locality},${place.postalCode},${place.country}';
+  String address = '${place.street},${place.locality},${place.country}';
+  return address;
 }

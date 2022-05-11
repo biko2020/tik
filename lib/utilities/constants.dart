@@ -8,3 +8,5 @@ const kBlueColor = Color(0xFF817DC0);
 const kShadownColor = Color(0xFF9E9E9E);
 const kRougeMarocaine = Color(0xFFD50000);
 const kVertMarocaine = Color(0xFF558B2F);
+
+dynamic imageName = "chemain de 'image";
