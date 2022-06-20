@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_svg/svg.dart';
 import 'package:tik/utilities/constants.dart';
 
@@ -51,31 +52,33 @@ class _HomeState extends State<Home> {
                     alignment: Alignment.topRight,
                     child: Container(
                       alignment: Alignment.center,
-                      height: 50,
-                      width: 50,
+                      height: 73,
+                      width: 73,
+                      child: Image.asset("assets/logos/logo.png"),
                       decoration: const BoxDecoration(
-                        color: kRougeMarocaine,
+                        color:Colors.white,
                         shape: BoxShape.circle,
                       ),
 
                       // --- logo
-                      child: const Text(
-                        "Tik",
-                        style: TextStyle(
-                          color: kVertMarocaine,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                        ),
-                      ),
-                      //child: SvgPicture.asset("assets/icons/tiklogo.svg"),
+                      //  child: const Text(
+                      //    "Tik",
+                      //    style: TextStyle(
+                      //      color: kVertMarocaine,
+                      //      fontWeight: FontWeight.bold,
+                      //      fontSize: 25.0,
+                      //    ),
+                      // ),
+                      //child: SvgPicture.asset("assets/logos/Tik.jpeg"),
+                      //child: Image.asset("assets/logos/Tik.jpeg"),
                     ),
                   ),
                   Text(
-                    "Tik pour la réforme \n de service public",
+                    "Participé à la réforme de service public \n",
                     style: Theme.of(context)
                         .textTheme
                         .displaySmall
-                        ?.copyWith(fontWeight: FontWeight.w100),
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   Expanded(
                     child: GridView.count(
@@ -88,8 +91,8 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         // ---- Service camera
                         ServiceCard(
-                          title: "Prendre une photo",
-                          imageSrc: "assets/icons/cameraC.svg",
+                          title: "Prendre photo",
+                          imageSrc: "assets/images/photoreclamation.png",
                           press: () {
                             //appel la classe MainCamera() depuis le fichier main_camera_model.dart
                             Navigator.push(
@@ -101,9 +104,36 @@ class _HomeState extends State<Home> {
                         // --- service Texte
                         ServiceCard(
                           title: "Ecrire un Texte",
-                          imageSrc: "assets/icons/cameraC.svg",
+                          imageSrc: "assets/images/textreclamation.png",
                           press: () {
                             // appel la classe WriteMessage depuis le fichier main_message_text.dart
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const WriteMessage()));
+                          },
+                        ),
+
+                        // --- service Video
+                        ServiceCard(
+                          title: "Envoyer Vidéo",
+                          imageSrc: "assets/images/textreclamation.png",
+                          press: () {
+                            // appel la classe makeVideo depuis le fichier main_Video.dart
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const WriteMessage()));
+                          },
+                        ),
+                        // --- service Voice
+                        ServiceCard(
+                          title: "Message vocale",
+                          imageSrc: "assets/images/textreclamation.png",
+                          press: () {
+                            // appel la classe makeVideo depuis le fichier main_Voice.dart
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -170,8 +200,8 @@ class ServiceCard extends StatelessWidget {
                 children: <Widget>[
                   const Spacer(),
                   // *****  recupere l'image dans imageSrc
-                  //Image(image: AssetImage(imageSrc)),
-                  SvgPicture.asset(imageSrc),
+                  Image(image: AssetImage(imageSrc)),
+                  //SvgPicture.asset(imageSrc),
                   const Spacer(),
                   Text(
                     // *****  recupere le text dans title

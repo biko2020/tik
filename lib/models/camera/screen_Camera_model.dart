@@ -1,7 +1,11 @@
+// ignore_for_file: file_names
+
 import 'dart:io';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:tik/utilities/constants.dart';
 
 // ---- importer des fichiers ---------
 import '../../providers/storage_picture.dart';
@@ -65,7 +69,7 @@ class ScreenCamera extends StatelessWidget {
                 // la fonction asslocation sert a enregistrer le les itinéraires
                 // dans la base de donnes firebaise store.
                 addlocation('${position.latitude}', '${position.longitude}',
-                    place, ville, pays);
+                    place, ville, pays, imageName);
 
                 //-------------------------------------------------------------
               }),

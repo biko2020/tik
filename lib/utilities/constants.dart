@@ -7,6 +7,6 @@ const kBlueLightColor = Color(0xFF817DC0);
 const kBlueColor = Color(0xFF817DC0);
 const kShadownColor = Color(0xFF9E9E9E);
 const kRougeMarocaine = Color(0xFFD50000);
-const kVertMarocaine = Color(0xFF558B2F);
+const kVertMarocaine = Color.fromARGB(255, 1, 116, 177);
 
 String imageName = "chemain de 'image";
