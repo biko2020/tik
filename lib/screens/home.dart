@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
                       width: 73,
                       child: Image.asset("assets/logos/logo.png"),
                       decoration: const BoxDecoration(
-                        color:Colors.white,
+                        color: Colors.white,
                         shape: BoxShape.circle,
                       ),
 
@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Text(
-                    "Participé à la réforme de service public \n",
+                    "Participer à la réforme de service public \n",
                     style: Theme.of(context)
                         .textTheme
                         .displaySmall
@@ -118,7 +118,7 @@ class _HomeState extends State<Home> {
                         // --- service Video
                         ServiceCard(
                           title: "Envoyer Vidéo",
-                          imageSrc: "assets/images/textreclamation.png",
+                          imageSrc: "assets/images/videoreclamation.jpg",
                           press: () {
                             // appel la classe makeVideo depuis le fichier main_Video.dart
                             Navigator.push(
@@ -131,7 +131,7 @@ class _HomeState extends State<Home> {
                         // --- service Voice
                         ServiceCard(
                           title: "Message vocale",
-                          imageSrc: "assets/images/textreclamation.png",
+                          imageSrc: "assets/images/voicereclamation.jpg",
                           press: () {
                             // appel la classe makeVideo depuis le fichier main_Voice.dart
                             Navigator.push(
