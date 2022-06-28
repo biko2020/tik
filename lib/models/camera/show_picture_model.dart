@@ -7,6 +7,7 @@ import '../../providers/storage_picture.dart';
 import '../../providers/storage_picture_location.dart';
 import '../location/get_location.dart';
 import 'package:tik/utilities/constants.dart'; //fichier des variables globale
+import '../Dialog/alertReclamation.dart';
 
 class ShowPicture extends StatelessWidget {
   final String imagePath;
@@ -23,27 +24,35 @@ class ShowPicture extends StatelessWidget {
           Image.file(File(imagePath)),
           const SizedBox(height: 5.0),
           OutlinedButton(
-              child: const Text('Envoyer votre réclamation'),
+              child:
+                  const Text('Réclamer', style: TextStyle(color: Colors.black)),
               onPressed: () async {
                 // appel la methode storageImage to firebase a fin de stocker l'image
                 storageImage(File(imagePath));
+
+                // afficher la boite de dialoge
+                showAlertDialog(context);
 
                 // appel la methode getLocation afin de recuperer les itinéraires
                 //-------------------------------------------------------------
                 Position position = await getLocation();
                 dynamic address = await getAddressLocation(position);
 
+                // récuperer la date de réclamation
+                DateTime now = DateTime.now();
+
                 List<String> result = address.split(',');
                 //séparer les elements du tableau
                 var place = result[0];
                 var ville = result[1];
                 var pays = result[2];
+                var dateReclam = now;
 
                 // la fonction addlocation sert a enregistrer les itinéraires
                 // dans firestore.
                 // recuperer le nom de l'image dans une variable global imageName.
                 addlocation('${position.latitude}', '${position.longitude}',
-                    place, ville, pays, imageName);
+                    place, ville, pays, imageName, dateReclam);
 
                 //-------------------------------------------------------------
               }),

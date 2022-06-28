@@ -43,22 +43,23 @@ class DisplayPictureScreen extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: Container(
                       alignment: Alignment.center,
-                      height: 50,
-                      width: 50,
+                      height: 73,
+                      width: 73,
+                      child: Image.asset("assets/logos/logo.png"),
                       decoration: const BoxDecoration(
-                        color: kRougeMarocaine,
+                        color: Colors.white,
                         shape: BoxShape.circle,
                       ),
 
                       // --- logo
-                      child: const Text(
-                        "Tik",
-                        style: TextStyle(
-                          color: kVertMarocaine,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                        ),
-                      ),
+                      // child: const Text(
+                      //   "Tik",
+                      //   style: TextStyle(
+                      //     color: kVertMarocaine,
+                      //     fontWeight: FontWeight.bold,
+                      //     fontSize: 25.0,
+                      //   ),
+                      // ),
                     ),
                   ),
                   Column(
@@ -89,22 +90,17 @@ class DisplayPictureScreen extends StatelessWidget {
                     height: 0.5,
                   ),
                   const Text(
-                    "Faire nous savoir s'il y a des anomalies sur votre ville",
-                  ),
+                      "Fait nous savoir s'il y a des anomalies dans le services public sur votre ville",
+                      style: TextStyle(fontSize: 18, color: Colors.white)),
                   Center(
                     child: Column(children: <Widget>[
                       //Text(imagePath),
                       const SizedBox(height: 34.0),
                       Container(
-                        // decoration: const BoxDecoration(
-                        //   shape: BoxShape.circle,
-                        //   color: Colors.redAccent,
-                        // ),
-
                         // definir la marge du cadre
                         padding: const EdgeInsets.all(2.0),
                         margin: const EdgeInsets.all(2.0),
-                        color: Colors.redAccent,
+                        color: kVertMarocaine,
 
                         // en recupere la taille de la fenetre, puis
                         // en definir la taille de l'image par rapport a l'ecran

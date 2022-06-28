@@ -3,6 +3,7 @@ import 'package:camera/camera.dart'; // utilisation du camera
 import 'package:flutter/material.dart'; // widgets
 import 'package:flutter/foundation.dart'; // pour if (kDebugMode)
 import 'package:tik/main.dart';
+import 'package:tik/utilities/constants.dart';
 
 // ---- importer des fichiers ---------
 import 'display_screen_model.dart';
@@ -63,7 +64,7 @@ class _TakePictureState extends State<TakePicture> {
           },
         ),
         title: const Text('Tik : Prendre une Photo'),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: kVertMarocaine,
       ),
       body:
           // Nous utilisons FutureBuilder pour s'assuré que le contrôleur a fini de s'initialiser.
@@ -84,7 +85,7 @@ class _TakePictureState extends State<TakePicture> {
           try {
             // s'assure l'initialisation du camera
             await _initializeControllerFuture;
-            // Essayez de prendre une photo, puis obtenez l'emplacement
+            // prendre une photo, puis obtenez l'emplacement
             final image = await _controller.takePicture();
             // afficher la photo dans un nouveau ecran.
             await Navigator.of(context).push(
