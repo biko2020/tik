@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 // insatancer lacollection de location
 
-Future<void> addlocation(
-    latitude, longitude, place, ville, pays, image, dateReclam) {
+Future<void> addlocation(latitude, longitude, place, ville, pays, image, date) {
   CollectionReference location =
       FirebaseFirestore.instance.collection('location');
 
@@ -18,8 +17,8 @@ Future<void> addlocation(
         'ville': ville,
         'pays': pays,
         'image': image,
-        'Date': dateReclam
+        'date': date
       })
-      .then((value) => debugPrint("add Location"))
-      .catchError((error) => debugPrint("Failed to add location: $error"));
+      .then((value) => debugPrint("Ajouter Location"))
+      .catchError((error) => debugPrint("Erreur: $error"));
 }

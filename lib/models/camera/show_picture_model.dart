@@ -5,9 +5,9 @@ import 'package:geolocator/geolocator.dart';
 // ---- importer des fichiers ---------
 import '../../providers/storage_picture.dart';
 import '../../providers/storage_picture_location.dart';
+import '../Dialog/alert_reclamation.dart';
 import '../location/get_location.dart';
 import 'package:tik/utilities/constants.dart'; //fichier des variables globale
-import '../Dialog/alertReclamation.dart';
 
 class ShowPicture extends StatelessWidget {
   final String imagePath;
@@ -46,13 +46,13 @@ class ShowPicture extends StatelessWidget {
                 var place = result[0];
                 var ville = result[1];
                 var pays = result[2];
-                var dateReclam = now;
+                var date = now;
 
                 // la fonction addlocation sert a enregistrer les itinéraires
                 // dans firestore.
                 // recuperer le nom de l'image dans une variable global imageName.
                 addlocation('${position.latitude}', '${position.longitude}',
-                    place, ville, pays, imageName, dateReclam);
+                    place, ville, pays, imageName, date);
 
                 //-------------------------------------------------------------
               }),

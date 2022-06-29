@@ -20,8 +20,7 @@ showAlertDialog(BuildContext context) {
       style: TextStyle(color: Colors.red),
     ),
     content:
-        const Text("Votre réclamation a été adresser au service concerner!"),
-        
+        const Text("Votre réclamation a été adressée au service concerner!"),
     actions: [
       okButton,
     ],
